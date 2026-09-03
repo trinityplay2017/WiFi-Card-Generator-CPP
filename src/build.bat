@@ -1,0 +1,1 @@
+buildWin32W main.cpp WifiCardWindow.cpp WifiQrGenerator.cpp qrcodegen.cpp

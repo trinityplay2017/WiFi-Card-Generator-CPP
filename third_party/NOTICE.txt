@@ -1,0 +1,6 @@
+This project uses the QR-Code-generator C++ library by Project Nayuki.
+
+Repository: https://github.com/nayuki/QR-Code-generator
+License: MIT
+
+The CMake build obtains the library from the upstream repository at configure time using FetchContent.
