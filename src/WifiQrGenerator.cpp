@@ -29,8 +29,20 @@ std::string EscapeWifiField(const std::string& value)
 }
 }
 
-std::string WifiQrGenerator::BuildPayload(const std::string& ssid, const std::string& password)
+std::string WifiQrGenerator::BuildPayload(const std::string& ssid,
+                                          const std::string& password,
+                                          const std::string& security)
 {
-    return "WIFI:T:WPA;S:" + EscapeWifiField(ssid) +
-           ";P:" + EscapeWifiField(password) + ";;";
+    const std::string safeSsid = EscapeWifiField(ssid);
+
+    if (security == "nopass")
+    {
+        return "WIFI:T:nopass;S:" + safeSsid + ";;";
+    }
+
+    const std::string safePassword = EscapeWifiField(password);
+
+    return "WIFI:T:" + security +
+           ";S:" + safeSsid +
+           ";P:" + safePassword + ";;";
 }
